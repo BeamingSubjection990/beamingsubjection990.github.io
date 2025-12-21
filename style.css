@@ -168,6 +168,19 @@ li:hover {
 
  /* Add this to style.css */
 
+nav a {
+    text-decoration: none;  /* Removes the underline */
+    color: inherit;         /* Forces it to be the same color as the rest of your text */
+}
 
+nav a:visited {
+    color: inherit;         /* Prevents it from turning purple after you click it */
+}
+
+/* Optional: If you want to be extra safe, target the specific class you made */
+.home-link {
+    text-decoration: none;
+    color: inherit;
+} 
 
 
