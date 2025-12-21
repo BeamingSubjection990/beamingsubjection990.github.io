@@ -20,3 +20,5 @@ document.addEventListener("DOMContentLoaded", () => {
     // Start after a slight delay
     setTimeout(typeWriter, 1000);
 });
+
+
