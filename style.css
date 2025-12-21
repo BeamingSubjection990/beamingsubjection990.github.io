@@ -6,6 +6,16 @@
     --font-stack: 'VT323', monospace;
 }
 
+.corner-logo {
+    position: fixed; /* This makes it stay in place when scrolling */
+    bottom: 0px;    /* Distance from the bottom of the screen */
+    right: 30px;     /* Distance from the right of the screen */
+    width: 60px;     /* Adjust size as needed */
+    height: auto;    /* Keeps the aspect ratio correct */
+    z-index: 100;    /* Ensures it sits on top of text/scanlines */
+    opacity: 0.3;    /* Optional: Makes it slightly see-through like a watermark */
+}
+
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
@@ -61,8 +71,8 @@ li {
 }
 
 li:hover {
-    color: #fff;
-    text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+    color: #4AF262;
+    text-shadow: 0 0 8px #4AF262;
 }
 
 .key {
@@ -154,5 +164,7 @@ li:hover {
     40% { clip: rect(40px, 9999px, 50px, 0); }
     100% { clip: rect(30px, 9999px, 90px, 0); }
 }
+  /*Home Page hover animation*/
 
+  
 

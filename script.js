@@ -1,3 +1,6 @@
+
+
+
 document.addEventListener("DOMContentLoaded", () => {
     const textElement = document.querySelector(".content");
     const originalText = textElement.innerHTML;
@@ -20,5 +23,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // Start after a slight delay
     setTimeout(typeWriter, 1000);
 });
+
 
 
