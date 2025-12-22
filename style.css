@@ -181,6 +181,44 @@ nav a:visited {
 .home-link {
     text-decoration: none;
     color: inherit;
-} 
+}
+
+/* BOOT SCREEN OVERLAY */
+#boot-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000; /* Pure black to hide the site */
+    z-index: 9999; /* Sits on top of EVERYTHING */
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 50px;
+    font-family: 'VT323', monospace;
+    color: #ccc;
+    font-size: 1.5rem;
+}
+
+.boot-text p {
+    margin: 5px 0;
+}
+
+.hidden {
+    display: none; /* Hides lines initially */
+}
+
+.green {
+    color: #00ff41;
+    font-weight: bold;
+}
+
+/* FADE OUT ANIMATION */
+.fade-out {
+    opacity: 0;
+    pointer-events: none; /* Lets you click through it after it fades */
+    transition: opacity 1s ease-out;
+}
 
 
