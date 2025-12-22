@@ -8,13 +8,10 @@
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     
     <style>
-        /* --- CLEAN SPLIT LAYOUT (NO SHADING) --- */
-        
+        /* --- GLOBAL STYLES --- */
         body {
-            overflow: hidden; /* Stops whole page scrolling */
-            background-color: #050505; /* Pure flat black background */
-            /* Ensure no other background images interfere */
-            background-image: none; 
+            overflow: hidden; /* Stops whole page scrolling on desktop */
+            background-color: #050505;
         }
 
         .layout-container {
@@ -25,17 +22,18 @@
             z-index: 5;
         }
 
-        /* --- LEFT SIDEBAR (MENU) --- */
+        /* --- SIDEBAR (DESKTOP DEFAULT) --- */
         .sidebar {
             width: 300px;
             height: 100%;
-            /* SIMPLE DIVIDER LINE - NO BACKGROUND COLOR */
             border-right: 1px solid #333; 
-            background: transparent; /* No shading, no dimming */
             padding: 30px;
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
+            background: transparent;
+            /* Keeps the sidebar fixed in place */
+            flex-shrink: 0; 
         }
 
         .sidebar-header {
@@ -48,102 +46,145 @@
             font-size: 1.2rem;
             color: #fff;
             margin: 0;
-            font-weight: normal;
         }
 
+        /* NAVIGATION LIST */
         .sidebar ul {
             list-style: none;
             padding: 0;
+            margin: 0;
         }
 
         .sidebar li {
             margin-bottom: 15px;
-            font-size: 1.1rem; /* Small, clean font */
+            font-size: 1.1rem;
         }
 
         .sidebar a {
             text-decoration: none;
-            color: #666; /* Grey by default */
+            color: #666; 
             display: block;
+            transition: color 0.2s;
         }
 
         .sidebar a:hover, .sidebar a.active {
-            color: #00ff41; /* Green when active */
+            color: #00ff41; 
         }
 
-        /* --- RIGHT SIDE (CONTENT) --- */
+        /* THE MOBILE TOGGLE BUTTON (HIDDEN ON DESKTOP) */
+        .menu-toggle {
+            display: none; /* Invisible by default */
+            background: none;
+            border: 1px solid #333;
+            color: #00ff41;
+            font-family: 'VT323', monospace;
+            font-size: 1.2rem;
+            padding: 10px;
+            cursor: pointer;
+            text-align: left;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+        .menu-toggle:hover {
+            background: rgba(0, 255, 65, 0.1);
+        }
+
+        /* --- MAIN CONTENT --- */
         .main-content {
             flex: 1; 
             padding: 50px;
-            overflow-y: auto; /* Scroll ONLY the text */
-            background: transparent; /* No tinting */
+            overflow-y: auto; 
         }
 
-        /* Hide scrollbar */
         .main-content::-webkit-scrollbar { width: 0px; }
 
-        /* --- TYPOGRAPHY (SMALL & CRISP) --- */
-        h1 {
-            font-size: 2rem; /* Small, professional header */
-            margin-top: 0;
-            color: #fff;
-            border-bottom: 1px solid #00ff41;
-            display: inline-block;
-            padding-bottom: 5px;
-            text-transform: uppercase;
+        /* Corner Logo Styling */
+        /* --- CORNER LOGO STYLING (DESKTOP DEFAULT) --- */
+        .corner-logo {
+            position: fixed;  /* Sticks to the viewport */
+            bottom: 20px;     /* Distance from bottom */
+            right: 20px;      /* Distance from right */
+            width: 80px;      /* Desktop size */
+            z-index: 101;     /* Ensures it's on top */
+            opacity: 0.8;     /* Slight transparency on desktop */
+            pointer-events: none; /* Lets clicks pass through it */
+            transition: all 0.3s ease; /* Smooth transition when resizing window */
         }
 
-        h2 {
-            font-size: 1.4rem;
-            color: #888;
-            margin-top: 40px;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border: none;
-        }
+        /* TYPOGRAPHY */
+        h1 { font-size: 2rem; margin-top: 0; color: #fff; border-bottom: 1px solid #00ff41; display: inline-block; padding-bottom: 5px; text-transform: uppercase; }
+        h2 { font-size: 1.4rem; color: #888; margin-top: 40px; margin-bottom: 10px; text-transform: uppercase; border: none; }
+        p { font-size: 1.1rem; line-height: 1.5; color: #ccc; max-width: 900px; margin-bottom: 20px; }
 
-        p {
-            font-size: 1.1rem;
-            line-height: 1.5;
-            color: #ccc;
-            max-width: 900px;
-            margin-bottom: 20px;
-        }
+        /* DATA GRID */
+        .data-grid { display: grid; grid-template-columns: 150px 1fr; gap: 10px; font-size: 1.4rem; margin-bottom: 10px; }
+        .label { color: #555; }
+        .value { color: #e0e0e0; }
+        
+        /* BLINK ANIMATION */
+        .status-alert { display: inline-block; padding: 0 5px; font-weight: bold; color: #00ff41; background-color: transparent; animation: alert-flash 1s steps(2, start) infinite; }
+        @keyframes alert-flash { 0% { background-color: #00ff41; color: #000; box-shadow: 0 0 10px #00ff41; } 50% { background-color: transparent; color: #00ff41; box-shadow: none; } 100% { background-color: #00ff41; color: #000; box-shadow: 0 0 10px #00ff41; } }
 
-        /* THE DATA GRID */
-        .data-grid {
-            display: grid;
-            grid-template-columns: 150px 1fr;
-            gap: 10px;
-            font-size: 1.4rem;
-            margin-bottom: 10px;
-        }
-
-        .label {
-            color: #555; /* Dark grey label */
-        }
-
-        .value {
-            color: #e0e0e0; /* Light grey text */
-        }
-
-        /* --- FALLOUT BLINK ANIMATION --- */
-        .blink-anim {
-            color: #00ff41; /* Fallout Neon Green */
-            font-weight: bold;
-            text-shadow: 0 0 5px rgba(0, 255, 65, 0.8); /* CRT Glow Effect */
+        /* --- MOBILE RESPONSIVE STYLES --- */
+        @media (max-width: 768px) {
             
-            /* The Animation: 1 second loop, distinct ON/OFF steps */
-            animation: blink 1s steps(2, start) infinite;
-        }
+            /* 1. Stack the layout vertically */
+            .layout-container {
+                flex-direction: column;
+            }
 
-        @keyframes blink {
-            to {
-                visibility: hidden;
+            /* 2. Adjust Sidebar Dimensions */
+            .sidebar {
+                width: 100%;
+                height: auto; /* Only take up necessary space */
+                border-right: none;
+                border-bottom: 1px solid #333;
+                padding: 20px;
+            }
+
+            /* 3. Hide the Header text on mobile to save space */
+            .sidebar-header {
+                display: none;
+            }
+
+            /* 4. Show the Toggle Button */
+            .menu-toggle {
+                display: block;
+            }
+
+            /* 5. Hide the actual links by default */
+            #nav-links {
+                display: none;
+                margin-top: 10px;
+                padding-left: 10px;
+                border-left: 1px dashed #333; /* Visual folder tree line */
+            }
+
+            /* 6. Class to show links when open */
+            #nav-links.open {
+                display: block;
+            }
+
+            /* 7. Adjust content padding */
+            .main-content {
+                padding: 20px;
+            }
+            
+            /* 8. Make H1 smaller on mobile */
+            h1 {
+                font-size: 1.5rem;
+            }
+            .corner-logo {
+                position: relative; /* Stops it from being fixed to the corner */
+                display: block;     /* Makes it behave like a block element so we can center it */
+                margin: 40px auto;  /* 40px margin top/bottom, 'auto' left/right centers it */
+                width: 60px;        /* Slightly smaller on mobile */
+                opacity: 1;         /* Full visibility at the end of the page */
+                bottom: auto;       /* Reset desktop positioning */
+                right: auto;        /* Reset desktop positioning */
             }
         }
-
     </style>
 </head>
 <body>
@@ -155,7 +196,11 @@
                 <p class="mini-title">BEAM_OS // SYSTEM</p>
             </div>
 
-            <nav>
+            <button id="menu-btn" class="menu-toggle">
+                > [ ACCESS_MENU ]
+            </button>
+
+            <nav id="nav-links">
                 <ul>
                     <li><a href="index.html">[1] HOME_ROOT</a></li>
                     <li><a href="#" class="active">> [2] EXEC_WHOAMI</a></li>
@@ -165,7 +210,7 @@
                 </ul>
             </nav>
 
-            <div style="margin-top: auto; font-size: 0.9rem; color: #333;">
+            <div class="desktop-status" style="margin-top: auto; font-size: 0.9rem; color: #333;">
                 STATUS: CONNECTED
             </div>
         </aside>
@@ -179,15 +224,12 @@
             </p>
 
             <h2>// 01_MISSION_STATEMENT</h2>
-            <p style="font-size:1.4rem;">
-
-            I am a first-year IT Undergraduate with a focus on Cybersecurity, but my education didn't start in the lecture hall. I am a self-taught programmer at heart, driven by an obsession with how technology works—and how to secure it.
-
-
-            <br><br>My work operates at a unique intersection: I study the rigid logic of Network Infrastructure while simultaneously mastering the creative precision of UX/UI Design. I don't just want to build systems; I want to make them unbreakable and intuitive.
-
-
-            <br><br>Beyond the code, I am the creator of [ ByteStream ], a tech blog where I break down complex concepts into simple stories. I am a lifelong learner, a problem solver, and a digital architect in training.
+            <p style="font-size: 1.4rem;">
+                I am a <strong>first-year IT Undergraduate</strong> with a focus on Cybersecurity, but my education didn't start in the lecture hall. I am a self-taught programmer at heart, driven by an obsession with how technology works—and how to secure it.
+                <br><br>
+                My work operates at a unique intersection: I study the rigid logic of <strong>Network Infrastructure</strong> while simultaneously mastering the creative precision of <strong>UX/UI Design</strong>. I don't just want to build systems; I want to make them unbreakable and intuitive.
+                <br><br>
+                Beyond the code, I am the creator of <strong>[ ByteStream ]</strong>, a tech blog where I break down complex concepts into simple stories.
             </p>
 
             <h2>// 02_OPERATOR_DATA</h2>
@@ -196,14 +238,16 @@
                 <div class="value">Thamira Weediyage</div>
 
                 <div class="label">CLASS:</div>
-                <div class="value">Undergraduate (Year 1) @ SLIIT</div>
+                <div class="value">Undergraduate (Year 1)</div>
 
                 <div class="label">ORIGIN:</div>
-                <div class="value">Sri Lanka [Piliyandala]</div>
+                <div class="value">Sri Lanka (Localhost)</div>
+
+
 
                 <div class="label">STATE:</div>
                 <div class="value" style="color: #00ff41;">[ ONLINE ]</div>
-                
+
             </div>
 
             <h2>// 03_INSTALLED_MODULES</h2>
@@ -220,11 +264,11 @@
 
             <h2>// 04_SYSTEM_LOGS</h2>
             <div class="data-grid">
-                <div class="label">2025-NOW:</div>
-                <div class="value">BSc Information Technology @ [SLIIT]</div>
+                <div class="label">2024-NOW:</div>
+                <div class="value">BSc Information Technology</div>
 
-                <div class="label">2016-2023:</div>
-                <div class="value">Higher Education @ [St. Joseph's College, Maradana]</div>
+                <div class="label">2022-2023:</div>
+                <div class="value">Secondary Education</div>
             </div>
 
         </main>
@@ -233,7 +277,29 @@
 
     <div class="scanlines" style="opacity: 0.3;"></div>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const menuBtn = document.getElementById("menu-btn");
+            const navLinks = document.getElementById("nav-links");
+
+            menuBtn.addEventListener("click", () => {
+                // Toggle the 'open' class
+                navLinks.classList.toggle("open");
+
+                // Change the text based on state
+                if (navLinks.classList.contains("open")) {
+                    menuBtn.innerText = "v [ CLOSE_MENU ]";
+                    menuBtn.style.color = "#fff"; // Optional: Highlight white when open
+                } else {
+                    menuBtn.innerText = "> [ ACCESS_MENU ]";
+                    menuBtn.style.color = "#00ff41"; // Return to green
+                }
+            });
+        });
+    </script>
+
     <script type="module" src="script.js"></script>
-    <img src="glitch_effect-1.gif" alt="System Logo" class="corner-logo">
 </body>
 </html>
+
+
