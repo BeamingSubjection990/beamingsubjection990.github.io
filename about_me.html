@@ -128,6 +128,22 @@
             color: #e0e0e0; /* Light grey text */
         }
 
+        /* --- FALLOUT BLINK ANIMATION --- */
+        .blink-anim {
+            color: #00ff41; /* Fallout Neon Green */
+            font-weight: bold;
+            text-shadow: 0 0 5px rgba(0, 255, 65, 0.8); /* CRT Glow Effect */
+            
+            /* The Animation: 1 second loop, distinct ON/OFF steps */
+            animation: blink 1s steps(2, start) infinite;
+        }
+
+        @keyframes blink {
+            to {
+                visibility: hidden;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -164,9 +180,14 @@
 
             <h2>// 01_MISSION_STATEMENT</h2>
             <p style="font-size:1.4rem;">
-                I am an IT Undergraduate exploring the intersection of backend logic and network infrastructure. 
-                My workflow is dedicated to building secure, efficient systems that bridge the gap between complex data 
-                architectures and user interaction.
+
+            I am a first-year IT Undergraduate with a focus on Cybersecurity, but my education didn't start in the lecture hall. I am a self-taught programmer at heart, driven by an obsession with how technology works—and how to secure it.
+
+
+            <br><br>My work operates at a unique intersection: I study the rigid logic of Network Infrastructure while simultaneously mastering the creative precision of UX/UI Design. I don't just want to build systems; I want to make them unbreakable and intuitive.
+
+
+            <br><br>Beyond the code, I am the creator of [ ByteStream ], a tech blog where I break down complex concepts into simple stories. I am a lifelong learner, a problem solver, and a digital architect in training.
             </p>
 
             <h2>// 02_OPERATOR_DATA</h2>
@@ -175,13 +196,14 @@
                 <div class="value">Thamira Weediyage</div>
 
                 <div class="label">CLASS:</div>
-                <div class="value">Undergraduate (Year 1)</div>
+                <div class="value">Undergraduate (Year 1) @ SLIIT</div>
 
                 <div class="label">ORIGIN:</div>
                 <div class="value">Sri Lanka (Localhost)</div>
 
                 <div class="label">STATE:</div>
                 <div class="value" style="color: #00ff41;">[ ONLINE ]</div>
+                
             </div>
 
             <h2>// 03_INSTALLED_MODULES</h2>
