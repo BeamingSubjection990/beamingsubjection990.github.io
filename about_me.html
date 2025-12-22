@@ -99,19 +99,6 @@
 
         .main-content::-webkit-scrollbar { width: 0px; }
 
-        /* Corner Logo Styling */
-        /* --- CORNER LOGO STYLING (DESKTOP DEFAULT) --- */
-        .corner-logo {
-            position: fixed;  /* Sticks to the viewport */
-            bottom: 20px;     /* Distance from bottom */
-            right: 20px;      /* Distance from right */
-            width: 80px;      /* Desktop size */
-            z-index: 101;     /* Ensures it's on top */
-            opacity: 0.8;     /* Slight transparency on desktop */
-            pointer-events: none; /* Lets clicks pass through it */
-            transition: all 0.3s ease; /* Smooth transition when resizing window */
-        }
-
         /* TYPOGRAPHY */
         h1 { font-size: 2rem; margin-top: 0; color: #fff; border-bottom: 1px solid #00ff41; display: inline-block; padding-bottom: 5px; text-transform: uppercase; }
         h2 { font-size: 1.4rem; color: #888; margin-top: 40px; margin-bottom: 10px; text-transform: uppercase; border: none; }
@@ -175,15 +162,6 @@
             h1 {
                 font-size: 1.5rem;
             }
-            .corner-logo {
-                position: relative; /* Stops it from being fixed to the corner */
-                display: block;     /* Makes it behave like a block element so we can center it */
-                margin: 40px auto;  /* 40px margin top/bottom, 'auto' left/right centers it */
-                width: 60px;        /* Slightly smaller on mobile */
-                opacity: 1;         /* Full visibility at the end of the page */
-                bottom: auto;       /* Reset desktop positioning */
-                right: auto;        /* Reset desktop positioning */
-            }
         }
     </style>
 </head>
@@ -210,7 +188,7 @@
                 </ul>
             </nav>
 
-            <div class="desktop-status" style="margin-top: auto; font-size: 0.9rem; color: #333;">
+            <div class="desktop-status" style="margin-top: auto; font-size: 0.9rem; color: #807e7e;">
                 STATUS: CONNECTED
             </div>
         </aside>
@@ -219,7 +197,7 @@
             
             <h1>USER_PROFILE: THAMIRA</h1>
             
-            <p style="color: #444; margin-bottom: 30px;">
+            <p style="color: #807e7e; margin-bottom: 30px;">
                 > ACCESSING DATABASE... COMPLETE.
             </p>
 
@@ -267,7 +245,7 @@
                 <div class="label">2025-NOW:</div>
                 <div class="value">BSc Information Technology @ [SLIIT]</div>
 
-                <div class="label">2016-2023:</div>
+                <div class="label">2016-2024:</div>
                 <div class="value">Higher Education @ [St. Joseph's College, Maradana]</div>
             </div>
 
@@ -277,7 +255,26 @@
 
     <div class="scanlines" style="opacity: 0.3;"></div>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const menuBtn = document.getElementById("menu-btn");
+            const navLinks = document.getElementById("nav-links");
 
+            menuBtn.addEventListener("click", () => {
+                // Toggle the 'open' class
+                navLinks.classList.toggle("open");
+
+                // Change the text based on state
+                if (navLinks.classList.contains("open")) {
+                    menuBtn.innerText = "v [ CLOSE_MENU ]";
+                    menuBtn.style.color = "#fff"; // Optional: Highlight white when open
+                } else {
+                    menuBtn.innerText = "> [ ACCESS_MENU ]";
+                    menuBtn.style.color = "#00ff41"; // Return to green
+                }
+            });
+        });
+    </script>
 
     <script type="module" src="script.js"></script>
 </body>
