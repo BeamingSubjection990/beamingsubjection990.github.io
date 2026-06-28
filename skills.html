@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Technical skills diagnostics of Thamira Weediyage, featuring core languages, frameworks, cloud, infrastructure, and automation modules.">
+    <title>SYSTEM_ROOT // SKILLS</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- GLOBAL STYLES --- */
+        body {
+            overflow: hidden;
+            /* Stops whole page scrolling on desktop */
+            background-color: #050505;
+        }
+
+        .layout-container {
+            display: flex;
+            height: 100vh;
+            width: 100vw;
+            position: relative;
+            z-index: 5;
+        }
+
+        /* --- SIDEBAR (DESKTOP DEFAULT) --- */
+        .sidebar {
+            width: 300px;
+            height: 100%;
+            border-right: 1px solid #333;
+            padding: 30px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            background: transparent;
+            /* Keeps the sidebar fixed in place */
+            flex-shrink: 0;
+        }
+
+        .sidebar-header {
+            margin-bottom: 40px;
+            border-bottom: 1px dashed #444;
+            padding-bottom: 10px;
+        }
+
+        .mini-title {
+            font-size: 1.2rem;
+            color: #fff;
+            margin: 0;
+        }
+
+        /* NAVIGATION LIST */
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar li {
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        .sidebar a,
+        .sidebar a:visited {
+            text-decoration: none;
+            color: #666;
+            display: block;
+            transition: color 0.2s;
+        }
+
+        .sidebar a:hover,
+        .sidebar a.active,
+        .sidebar a:hover:visited {
+            color: #00ff41;
+        }
+
+        /* THE MOBILE TOGGLE BUTTON (HIDDEN ON DESKTOP) */
+        .menu-toggle {
+            display: none;
+            /* Invisible by default */
+            background: none;
+            border: 1px solid #333;
+            color: #00ff41;
+            font-family: 'VT323', monospace;
+            font-size: 1.5rem;
+            padding: 10px;
+            cursor: pointer;
+            text-align: left;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+        .menu-toggle:hover {
+            background: rgba(0, 255, 65, 0.1);
+        }
+
+        /* --- MAIN CONTENT --- */
+        .main-content {
+            flex: 1;
+            padding: 50px;
+            overflow-y: auto;
+            font-family: 'IBM Plex Mono', monospace;
+        }
+
+        .main-content::-webkit-scrollbar {
+            width: 0px;
+        }
+
+        /* TYPOGRAPHY */
+        h1 {
+            font-size: 1.8rem;
+            margin-top: 0;
+            color: #fff;
+            border-bottom: 2px solid #00ff41;
+            display: inline-block;
+            padding-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        h2 {
+            font-size: 1.1rem;
+            color: #888;
+            margin-top: 40px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            border: none;
+            letter-spacing: 1.5px;
+        }
+
+        p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #ccc;
+            max-width: 900px;
+            margin-bottom: 20px;
+        }
+
+        /* TERMINAL BLOCK CARDS */
+        .terminal-block {
+            background-color: rgba(10, 10, 10, 0.8);
+            border: 1px solid #222;
+            border-radius: 4px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.8);
+            max-width: 900px;
+        }
+
+        .terminal-cmd {
+            color: #00ff41;
+            font-weight: bold;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+            user-select: none;
+        }
+
+        .skill-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .skill-list li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px dashed rgba(51, 51, 51, 0.5);
+            font-size: 0.95rem;
+        }
+
+        .skill-list li:last-child {
+            border-bottom: none;
+        }
+
+        .skill-name {
+            color: #e0e0e0;
+        }
+
+        /* STATUS BADGES */
+        .status-badge {
+            font-weight: bold;
+            padding: 2px 10px;
+            border-radius: 2px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .status-badge.proficient {
+            color: #00ff41;
+            border: 1px solid rgba(0, 255, 65, 0.3);
+            background-color: rgba(0, 255, 65, 0.05);
+        }
+
+        .status-badge.active {
+            color: #00ff41;
+            border: 1px solid rgba(0, 255, 65, 0.3);
+            background-color: rgba(0, 255, 65, 0.05);
+        }
+
+        .status-badge.compiled {
+            color: #00e5ff;
+            border: 1px solid rgba(0, 229, 255, 0.3);
+            background-color: rgba(0, 229, 255, 0.05);
+        }
+
+        .status-badge.ready {
+            color: #00e5ff;
+            border: 1px solid rgba(0, 229, 255, 0.3);
+            background-color: rgba(0, 229, 255, 0.05);
+        }
+
+        .status-badge.installed {
+            color: #b388ff;
+            border: 1px solid rgba(179, 136, 255, 0.3);
+            background-color: rgba(179, 136, 255, 0.05);
+        }
+
+        .status-badge.tracking {
+            color: #b388ff;
+            border: 1px solid rgba(179, 136, 255, 0.3);
+            background-color: rgba(179, 136, 255, 0.05);
+        }
+
+        .status-badge.root {
+            color: #ff3366;
+            border: 1px solid rgba(255, 51, 102, 0.3);
+            background-color: rgba(255, 51, 102, 0.05);
+        }
+
+        .status-badge.progress {
+            color: #ffab40;
+            border: 1px solid rgba(255, 171, 64, 0.3);
+            background-color: rgba(255, 171, 64, 0.05);
+        }
+
+        .status-badge.enabled {
+            color: #00ff41;
+            border: 1px solid rgba(0, 255, 65, 0.3);
+            background-color: rgba(0, 255, 65, 0.05);
+        }
+
+        /* --- MOBILE RESPONSIVE STYLES --- */
+        @media (max-width: 768px) {
+
+            /* 1. Stack the layout vertically */
+            .layout-container {
+                flex-direction: column;
+            }
+
+            /* 2. Adjust Sidebar Dimensions */
+            .sidebar {
+                width: 100%;
+                height: auto;
+                /* Only take up necessary space */
+                border-right: none;
+                border-bottom: 1px solid #333;
+                padding: 20px;
+            }
+
+            /* 3. Hide the Header text on mobile to save space */
+            .sidebar-header {
+                display: none;
+            }
+
+            /* 4. Show the Toggle Button */
+            .menu-toggle {
+                display: block;
+            }
+
+            /* 5. Hide the actual links by default */
+            #nav-links {
+                display: none;
+                margin-top: 10px;
+                padding-left: 10px;
+                border-left: 1px dashed #333;
+                /* Visual folder tree line */
+            }
+
+            /* 6. Class to show links when open */
+            #nav-links.open {
+                display: block;
+            }
+
+            /* 7. Adjust content padding */
+            .main-content {
+                padding: 20px;
+            }
+
+            /* 8. Make H1 smaller on mobile */
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            /* Stack skill list items on very small displays */
+            .skill-list li {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="layout-container">
+
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <p class="mini-title">BEAM_OS // SYSTEM</p>
+            </div>
+
+            <button id="menu-btn" class="menu-toggle">
+                > [ ACCESS_MENU ]
+            </button>
+
+            <nav id="nav-links">
+                <ul>
+                    <li><a href="index.html">[1] HOME_ROOT</a></li>
+                    <li><a href="about_me.html">[2] EXEC_WHOAMI</a></li>
+                    <li><a href="#">[3] PROJECTS_DIR</a></li>
+                    <li><a href="#" class="active">> [4] SKILL_SET</a></li>
+                    <li><a href="#">[5] COMM_LINK</a></li>
+                    <li><a href="https://thamiraweediyage.wordpress.com/">[6] [ByteStream]</a></li>
+                </ul>
+            </nav>
+
+            <div class="desktop-status" style="margin-top: auto; font-size: 0.9rem; color: #807e7e;">
+                STATUS: CONNECTED
+            </div>
+        </aside>
+
+        <main class="main-content">
+
+            <h1>SKILL_DIAGNOSTICS: SYSTEMS_CHECK</h1>
+
+            <p style="color: #807e7e; margin-bottom: 30px;">
+                > RUNNING DIAGNOSTIC REPORT... INITIALIZING MODULE SCAN.
+            </p>
+
+            <h2>// 01_CORE_LANGUAGES</h2>
+            <div class="terminal-block">
+                <div class="terminal-cmd">> cat core_languages.log</div>
+                <ul class="skill-list">
+                    <li>
+                        <span class="skill-name">Python</span>
+                        <span class="status-badge proficient">[ PROFICIENT ]</span>
+                    </li>
+                    <li>
+                        <span class="skill-name">Java</span>
+                        <span class="status-badge proficient">[ PROFICIENT ]</span>
+                    </li>
+                    <li>
+                        <span class="skill-name">JavaScript / HTML5 / CSS3</span>
+                        <span class="status-badge active">[ ACTIVE ]</span>
+                    </li>
+                    <li>
+                        <span class="skill-name">SQL</span>
+                        <span class="status-badge active">[ ACTIVE ]</span>
+                    </li>
+                </ul>
+            </div>
+
+            <h2>// 02_FRAMEWORKS_&_DEV_TOOLS</h2>
+            <div class="terminal-block">
+                <div class="terminal-cmd">> query --type=frameworks</div>
+                <ul class="skill-list">
+                    <li>
+                        <span class="skill-name">Spring Boot</span>
+                        <span class="status-badge compiled">[ COMPILED ]</span>
+                    </li>
+                    <li>
+                        <span class="skill-name">Jinja2 Templating</span>
+                        <span class="status-badge ready">[ READY ]</span>
+                    </li>
+                    <li>
+                        <span class="skill-name">ERPNext / Customization</span>
+                        <span class="status-badge installed">[ INSTALLED ]</span>
+                    </li>
+                    <li>
+                        <span class="skill-name">Git & Version Control</span>
+                        <span class="status-badge tracking">[ TRACKING ]</span>
+                    </li>
+                </ul>
+            </div>
+
+            <h2>// 03_INFRASTRUCTURE_&_SECURITY</h2>
+            <div class="terminal-block">
+                <div class="terminal-cmd">> netstat --list-services</div>
+                <ul class="skill-list">
+                    <li>
+                        <span class="skill-name">Linux Administration (Manjaro, Mint, Bash Scripting)</span>
+                        <span class="status-badge root">[ ROOT_ACCESS ]</span>
+                    </li>
+                    <li>
+                        <span class="skill-name">Oracle Cloud Infrastructure (OCI) - Foundations Certified</span>
+                        <span class="status-badge active">[ CERTIFIED ]</span>
+                    </li>
+                    <li>
+                        <span class="skill-name">AWS Cloud Practitioner</span>
+                        <span class="status-badge progress">[ IN_PROGRESS ]</span>
+                    </li>
+                    <li>
+                        <span class="skill-name">Fortinet NSE</span>
+                        <span class="status-badge progress">[ IN_PROGRESS ]</span>
+                    </li>
+                    <li>
+                        <span class="skill-name">Network Monitoring & TCP/IP</span>
+                        <span class="status-badge active">[ ACTIVE_LISTEN ]</span>
+                    </li>
+                </ul>
+            </div>
+
+            <h2>// 04_AUTOMATION_&_SCRIPTING</h2>
+            <div class="terminal-block">
+                <div class="terminal-cmd">> systemctl status automation.service</div>
+                <ul class="skill-list">
+                    <li>
+                        <span class="skill-name">AutoHotkey</span>
+                        <span class="status-badge enabled">[ ENABLED ]</span>
+                    </li>
+                    <li>
+                        <span class="skill-name">Workflow Automation</span>
+                        <span class="status-badge active">[ RUNNING ]</span>
+                    </li>
+                </ul>
+            </div>
+
+        </main>
+
+    </div>
+
+    <div class="scanlines" style="opacity: 0.3;"></div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const menuBtn = document.getElementById("menu-btn");
+            const navLinks = document.getElementById("nav-links");
+
+            menuBtn.addEventListener("click", () => {
+                // Toggle the 'open' class
+                navLinks.classList.toggle("open");
+
+                // Change the text based on state
+                if (navLinks.classList.contains("open")) {
+                    menuBtn.innerText = "v [ CLOSE_MENU ]";
+                    menuBtn.style.color = "#fff"; // Highlight white when open
+                } else {
+                    menuBtn.innerText = "> [ ACCESS_MENU ]";
+                    menuBtn.style.color = "#00ff41"; // Return to green
+                }
+            });
+        });
+    </script>
+
+    <script type="module" src="script.js"></script>
+</body>
+
+</html>
