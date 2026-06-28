@@ -93,6 +93,7 @@ li:hover {
 .glitch {
     position: relative;
     color: var(--text-color);
+    animation: main-glitch 3s infinite linear;
 }
 
 /* Creates a copy of the text in Red and Blue, offset slightly */
@@ -108,16 +109,14 @@ li:hover {
 
 .glitch::before {
     left: 2px;
-    text-shadow: -1px 0 #ff00c1;
-    clip: rect(44px, 450px, 56px, 0);
-    animation: glitch-anim 5s infinite linear alternate-reverse;
+    text-shadow: -2px 0 #ff00c1;
+    animation: glitch-anim 3s infinite linear;
 }
 
 .glitch::after {
     left: -2px;
-    text-shadow: -1px 0 #00fff9;
-    clip: rect(44px, 450px, 56px, 0);
-    animation: glitch-anim2 5s infinite linear alternate-reverse;
+    text-shadow: 2px 0 #00fff9;
+    animation: glitch-anim2 3s infinite linear;
 }
 
 /* OVERLAY EFFECTS (CRT MONITOR LOOK) */
@@ -150,19 +149,54 @@ li:hover {
     z-index: 11;
 }
 
-/* GLITCH ANIMATION KEYFRAMES */
+/* GLITCH ANIMATION KEYFRAMES (BURST EFFECT) */
+@keyframes main-glitch {
+    0%, 70%, 100% { transform: none; }
+    71% { transform: translate(-1px, 0.5px) skew(0.5deg); }
+    73% { transform: translate(1px, -0.5px) skew(-0.5deg); }
+    75% { transform: translate(0); }
+    79% { transform: translate(-0.5px, -1px) skew(-1deg); }
+    81% { transform: translate(1px, 1px) skew(1deg); }
+    83% { transform: translate(0); }
+    87% { transform: translate(-1px, 1px) skew(0.5deg); }
+    89% { transform: translate(1px, -1px) skew(-0.5deg); }
+    91% { transform: translate(0); }
+    93% { transform: translate(-0.5px, 0.5px) skew(1deg); }
+    95% { transform: translate(0.5px, -0.5px) skew(-1deg); }
+}
+
 @keyframes glitch-anim {
-    0% { clip: rect(30px, 9999px, 10px, 0); }
-    5% { clip: rect(70px, 9999px, 90px, 0); }
-    10% { clip: rect(20px, 9999px, 50px, 0); }
-    100% { clip: rect(80px, 9999px, 10px, 0); }
+    0%, 70%, 100% { opacity: 0; clip-path: inset(100% 0 0 0); transform: translate(0); }
+    71% { opacity: 1; clip-path: inset(10% 0 85% 0); transform: translate(-2px, -1px); }
+    73% { clip-path: inset(80% 0 5% 0); transform: translate(2px, 1px); }
+    75% { clip-path: inset(40% 0 50% 0); transform: translate(-1px, 2px); }
+    77% { opacity: 0; }
+    79% { opacity: 1; clip-path: inset(15% 0 80% 0); transform: translate(1px, -2px); }
+    81% { clip-path: inset(60% 0 25% 0); transform: translate(-2px, 1px); }
+    83% { clip-path: inset(5% 0 92% 0); transform: translate(2px, -1px); }
+    85% { opacity: 0; }
+    87% { opacity: 1; clip-path: inset(85% 0 10% 0); transform: translate(1px, 1px); }
+    89% { clip-path: inset(30% 0 65% 0); transform: translate(-1px, -1px); }
+    91% { clip-path: inset(70% 0 15% 0); transform: translate(2px, 2px); }
+    93% { clip-path: inset(2% 0 90% 0); transform: translate(-2px, -2px); }
+    95% { opacity: 1; clip-path: inset(50% 0 45% 0); transform: translate(0); }
 }
 
 @keyframes glitch-anim2 {
-    0% { clip: rect(10px, 9999px, 80px, 0); }
-    20% { clip: rect(80px, 9999px, 10px, 0); }
-    40% { clip: rect(40px, 9999px, 50px, 0); }
-    100% { clip: rect(30px, 9999px, 90px, 0); }
+    0%, 70%, 100% { opacity: 0; clip-path: inset(100% 0 0 0); transform: translate(0); }
+    72% { opacity: 1; clip-path: inset(85% 0 10% 0); transform: translate(2px, 1px); }
+    74% { clip-path: inset(15% 0 80% 0); transform: translate(-2px, -1px); }
+    76% { clip-path: inset(50% 0 45% 0); transform: translate(1px, -2px); }
+    78% { opacity: 0; }
+    80% { opacity: 1; clip-path: inset(60% 0 25% 0); transform: translate(-1px, 2px); }
+    82% { clip-path: inset(5% 0 92% 0); transform: translate(2px, -1px); }
+    84% { clip-path: inset(40% 0 50% 0); transform: translate(-2px, 1px); }
+    86% { opacity: 0; }
+    88% { opacity: 1; clip-path: inset(10% 0 85% 0); transform: translate(-1px, -1px); }
+    90% { clip-path: inset(80% 0 5% 0); transform: translate(1px, 1px); }
+    92% { clip-path: inset(30% 0 65% 0); transform: translate(-2px, 2px); }
+    94% { clip-path: inset(70% 0 15% 0); transform: translate(2px, -2px); }
+    96% { opacity: 1; clip-path: inset(2% 0 90% 0); transform: translate(0); }
 }
   /*Home Page hover animation*/
 

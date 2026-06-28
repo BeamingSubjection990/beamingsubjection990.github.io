@@ -3,25 +3,27 @@
 
 document.addEventListener("DOMContentLoaded", () => {
     const textElement = document.querySelector(".content");
-    const originalText = textElement.innerHTML;
-    
-    // Clear text initially
-    textElement.innerHTML = "";
-    
-    let i = 0;
-    
-    // Function to simulate typing, treating HTML tags as single characters
-    function typeWriter() {
-        if (i < originalText.length) {
-            textElement.innerHTML += originalText.charAt(i);
-            i++;
-            // Randomize typing speed for realism
-            setTimeout(typeWriter, Math.random() * 50 + 30);
+    if (textElement) {
+        const originalText = textElement.innerHTML;
+        
+        // Clear text initially
+        textElement.innerHTML = "";
+        
+        let i = 0;
+        
+        // Function to simulate typing, treating HTML tags as single characters
+        function typeWriter() {
+            if (i < originalText.length) {
+                textElement.innerHTML += originalText.charAt(i);
+                i++;
+                // Randomize typing speed for realism
+                setTimeout(typeWriter, Math.random() * 50 + 30);
+            }
         }
+        
+        // Start after a slight delay
+        setTimeout(typeWriter, 1000);
     }
-    
-    // Start after a slight delay
-    setTimeout(typeWriter, 1000);
 });
 
 
@@ -35,14 +37,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const line4 = document.getElementById("line4");
     const bootScreen = document.getElementById("boot-screen");
 
-    // 2. Define the timeline (in milliseconds)
-    setTimeout(() => { line1.style.display = "block"; }, 500);  // Show Line 1 after 0.5s
-    setTimeout(() => { line2.style.display = "block"; }, 1500); // Show Line 2 after 1.5s
-    setTimeout(() => { line3.style.display = "block"; }, 2500); // Show Line 3 after 2.5s
-    setTimeout(() => { line4.style.display = "block"; }, 3500); // Show Line 4 after 3.5s
+    // Check if the boot screen elements exist
+    if (bootScreen && line1 && line2 && line3 && line4) {
+        // 2. Define the timeline (in milliseconds)
+        setTimeout(() => { line1.style.display = "block"; }, 500);  // Show Line 1 after 0.5s
+        setTimeout(() => { line2.style.display = "block"; }, 1500); // Show Line 2 after 1.5s
+        setTimeout(() => { line3.style.display = "block"; }, 2500); // Show Line 3 after 2.5s
+        setTimeout(() => { line4.style.display = "block"; }, 3500); // Show Line 4 after 3.5s
 
-    // 3. Fade out the whole screen after 4.5 seconds
-    setTimeout(() => {
-        bootScreen.classList.add("fade-out");
-    }, 4500);
+        // 3. Fade out the whole screen after 4.5 seconds
+        setTimeout(() => {
+            bootScreen.classList.add("fade-out");
+        }, 4500);
+    }
 });
