@@ -256,3 +256,72 @@ nav a:visited {
 }
 
 
+/* --- MOBILE RESPONSIVE STYLES FOR HOMEPAGE --- */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.2rem; /* Scaled down from 4rem to prevent text cutoff on small viewport displays */
+        letter-spacing: 1px;
+        display: block;
+        text-align: center;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+
+    .screen {
+        width: 95%;
+        padding: 10px;
+    }
+
+    header {
+        text-align: center;
+    }
+
+    nav.home_nav {
+        display: flex;
+        justify-content: center;
+    }
+
+    nav.home_nav ul {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0;
+        margin: 0;
+    }
+
+    nav.home_nav li {
+        font-size: 1.3rem; /* Sized down from 1.8rem for comfortable mobile viewing */
+        margin: 12px 0;
+        text-align: left;
+    }
+
+    .content {
+        margin-top: 20px;
+        font-size: 0.95rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .content p {
+        text-align: left;
+        margin: 5px 0;
+        width: fit-content;
+    }
+    
+    footer {
+        margin-top: 30px;
+        text-align: center;
+    }
+
+    #boot-screen {
+        padding: 20px;
+        font-size: 1.1rem;
+    }
+}
+
+
